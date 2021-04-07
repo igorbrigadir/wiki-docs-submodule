@@ -15,5 +15,5 @@ jobs:
         git config --local user.name $(git show --format="%aN" --quiet)
         git config --local user.email $(git show --format="%aE" --quiet)
         cd ..
-        git add docs
+        git add .
         git diff-index --quiet HEAD || git commit -m $(git log -1  --pretty='%s') && git push
