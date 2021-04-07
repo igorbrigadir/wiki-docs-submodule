@@ -20,4 +20,4 @@ jobs:
         git config --local user.email $GIT_EMAIL
         cd ..
         git add .
-        git diff-index --quiet HEAD || git commit -m $GIT_COMMIT && git push
+        git diff-index --quiet HEAD || git commit -m "$GIT_COMMIT" && git push
