@@ -9,10 +9,11 @@ jobs:
         submodules: recursive
     - name: Push wiki changes
       run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git config pull.ff only
         cd docs
         git pull
         cd ..
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
         git add .
         git diff-index --quiet HEAD || git commit -m "Add wiki changes" && git push
