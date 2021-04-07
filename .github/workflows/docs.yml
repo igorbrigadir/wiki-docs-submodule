@@ -12,9 +12,10 @@ jobs:
         cd docs
         git reset --hard origin/master
         git pull origin master
-        GIT_USER=$(git show --format='%aN' --quiet)
-        GIT_EMAIL=$(git show --format='%aE' --quiet)
-        GIT_COMMIT=$(git log -1  --pretty='%s')
+        GIT_USER=`git show --format='%aN' --quiet`
+        GIT_EMAIL=`git show --format='%aE' --quiet`
+        GIT_COMMIT=`git log -1  --pretty='%s'`
+        echo "$GIT_USER $GIT_EMAIL $GIT_COMMIT"
         git config --local user.name "$GIT_USER"
         git config --local user.email "$GIT_EMAIL"
         cd ..
