@@ -12,8 +12,8 @@ jobs:
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         cd docs
-        git fetch
-        git merge origin/master
+        git reset --hard origin/master
+        git pull origin master
         cd ..
         git add .
         git diff-index --quiet HEAD || git commit -m "Sync wiki changes" && git push
