@@ -12,7 +12,8 @@ jobs:
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         cd docs
-        git --ff-only pull
+        git fetch
+        git rebase origin/master
         cd ..
         git add .
-        git diff-index --quiet HEAD || git commit -m "Add wiki changes" && git push
+        git diff-index --quiet HEAD || git commit -m "Sync wiki changes" && git push
