@@ -16,8 +16,8 @@ jobs:
         GIT_EMAIL=`git show --format='%aE' --quiet`
         GIT_COMMIT=`git log -1  --pretty='%s'`
         echo "$GIT_USER $GIT_EMAIL $GIT_COMMIT"
-        git config --local user.name ${{env.GIT_USER}}
-        git config --local user.email ${{env.GIT_EMAIL}}
+        git config --local user.name $(`git show --format='%aN' --quiet`)
+        git config --local user.email '$GIT_EMAIL'
         cd ..
         git add .
-        git diff-index --quiet HEAD || git commit -m ${{env.GIT_COMMIT}} && git push
+        git diff-index --quiet HEAD || git commit -m ${{GIT_COMMIT}} && git push
