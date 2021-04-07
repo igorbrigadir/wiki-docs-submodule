@@ -9,16 +9,16 @@ jobs:
         submodules: recursive
     - name: Details
       run: |
-        echo "$(git show --format="%aN" --quiet)"
-        echo "$(git show --format="%aE" --quiet)"
-        echo "$(git log -1  --pretty='%s')"
+        echo "${{git show --format="%aN" --quiet}}"
+        echo "${{git show --format="%aE" --quiet}}"
+        echo "${{git log -1  --pretty='%s'}}"
     - name: Push wiki changes
       run: |
         cd docs
         git reset --hard origin/master
         git pull origin master
-        git config --local user.name "$(git show --format="%aN" --quiet)"
-        git config --local user.email "$(git show --format="%aE" --quiet)"
+        git config --local user.name "${{git show --format="%aN" --quiet}}"
+        git config --local user.email "${{git show --format="%aE" --quiet}}"
         cd ..
         git add .
-        git diff-index --quiet HEAD || git commit -m "$(git log -1  --pretty='%s')" && git push
+        git diff-index --quiet HEAD || git commit -m "${{git log -1  --pretty='%s'}}" && git push
