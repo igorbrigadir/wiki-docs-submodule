@@ -15,7 +15,6 @@ jobs:
         GIT_USER=`git show --format='%aN' --quiet`
         GIT_EMAIL=`git show --format='%aE' --quiet`
         GIT_COMMIT=`git log -1  --pretty='%s'`
-        echo "$GIT_USER $GIT_EMAIL $GIT_COMMIT"
         cd ..
         git config --local user.name $GIT_USER
         git config --local user.email $GIT_EMAIL
