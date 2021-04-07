@@ -7,23 +7,13 @@ jobs:
     - uses: actions/checkout@v2
       with:
         submodules: recursive
-    - name: View the information of the pusher
-      run: |
-        echo "The name of the pusher: ${{ github.event.pusher.name }}"
-        echo "The email of the pusher: ${{ github.event.pusher.email }}"
-
-    - name: View the github context
-      env:
-        GITHUB_CONTEXT: ${{ toJson(github) }}
-      run: echo "$GITHUB_CONTEXT"
-        
     - name: Push wiki changes
       run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
         cd docs
         git reset --hard origin/master
         git pull origin master
+        git config --local user.name $(git show --format="%aN" --quiet)
+        git config --local user.email $(git show --format="%aE" --quiet)
         cd ..
-        git add .
-        git diff-index --quiet HEAD || git commit -m "Sync wiki changes" && git push
+        git add docs
+        git diff-index --quiet HEAD || git commit -m $(git log -1  --pretty='%s') && git push
