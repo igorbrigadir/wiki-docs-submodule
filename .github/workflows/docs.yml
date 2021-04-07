@@ -13,7 +13,7 @@ jobs:
         git config --local user.name "GitHub Action"
         cd docs
         git fetch
-        git rebase origin/master
+        git merge --ff-only origin/master
         cd ..
         git add .
         git diff-index --quiet HEAD || git commit -m "Sync wiki changes" && git push
