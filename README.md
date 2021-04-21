@@ -9,7 +9,11 @@ git clone https://github.com/igorbrigadir/wiki-docs-submodule.git
 git submodule update --init
 ```
 
-Making a new submodule:
+`cd` into `docs` folder, push and commit docs changes to the submodule to update the wiki.
+
+Some caveats: using submodules means you may have to add some additional configurations and steps for things like readthedocs for example.
+
+For reference, making a new submodule:
 
 ```
 git submodule add git@github.com:igorbrigadir/wiki-docs-submodule.wiki.git docs
